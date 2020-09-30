@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="500dp">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:text="have
+              a
+             try"
+            android:gravity="center"
+            android:textColor="#CDCBB5"
+            android:textSize="70dp"
+            android:layout_width="200dp"
+            android:layout_height="match_parent" />
+
+        <View
+
+            android:layout_marginTop="20dp"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="#E8856C6C"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginHorizontal="50dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="500dp">
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:background="@drawable/ic_baseline_alarm_24"
+        android:layout_height="100dp"/>
+
+
+            <Button
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_baseline_android_24"/>
+            <Button
+                android:layout_marginHorizontal="20dp"
+
+                android:layout_marginTop="50dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_baseline_extension_24"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="200dp">
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#52D6EFEB"/>
+
+
+
+    </LinearLayout>
+</LinearLayout>

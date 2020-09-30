@@ -1,6 +1,8 @@
 package com.example.photo;
 
-public class ImageBean {
+import java.io.Serializable;
+
+public class ImageBean  {
     private String path;
     private long date ;
 

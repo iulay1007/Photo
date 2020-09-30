@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
@@ -22,8 +24,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.LinearLayout;
 
 import com.example.photo.adapter.RecyclerviewAdapter;
+import com.example.photo.utils.ItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,27 +37,31 @@ public class MainActivity extends AppCompatActivity {
     public static int PERMISSION_REQUEST_CODE=1;
     public static int LOADER_ID =1;
     private   RecyclerviewAdapter recyclerviewAdapter;
-    private List<ImageBean> imageBeanList=new ArrayList<>();
+    private MainActivity2 mainActivity2;
+    public static List<ImageBean> imageBeanList=new ArrayList<>();
     private static String TAG="MainActivity";
     private final static int SCAN_OK=1;
     @SuppressLint("HandlerLeak")
-    private final Handler mHandler = new Handler() {
+    private  Handler mHandler = new Handler() {
 
 
         @Override
         public void handleMessage(Message msg) {
-            super.handleMessage(msg);
+           super.handleMessage(msg);
+
             switch (msg.what) {
                 case SCAN_OK:
                     Log.d(TAG,"handlermsg");
 
 
-                    recyclerviewAdapter.notifyDataSetChanged();
-
+                  //  MediaApplication.getInstance().setPhotoList(imageBeanList);
                     recyclerviewAdapter.setData(imageBeanList);
+
+                recyclerviewAdapter.notifyDataSetChanged();
 
                     Log.d(TAG,"handlermsg");
                     break;
+                default:Log.d(TAG,"handler_error");
             }
         }
 
@@ -100,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+
                 ContentResolver contentResolver = MainActivity.this.getContentResolver();
                 Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                 Cursor mCursor = contentResolver.query(uri, new String[]{"_data","date_added"}, null, null, "date_added DESC");
@@ -135,9 +144,17 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
 
         RecyclerView recyclerView = this.findViewById(R.id.image_list_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+
+       // recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+       // recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+       recyclerView.setLayoutManager(new GridLayoutManager(this,4));
        recyclerviewAdapter=new RecyclerviewAdapter();
+        int space =5;
+      //  recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL),5);
+        recyclerView.addItemDecoration(new ItemDecoration(space));
+
         recyclerView.setAdapter(recyclerviewAdapter);
+
     }
 
 
